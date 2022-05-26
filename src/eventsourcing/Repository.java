@@ -1,16 +1,21 @@
 package eventsourcing;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class Repository {
 
-	private HashMap<String, Object> map = new HashMap<String, Object>();
+	private LinkedHashMap<String, Object> map = new LinkedHashMap();
+	Synchronizer sync = new Synchronizer();
 
-	public HashMap<String, Object> getMap() {
-		return map;
+	public void setUserData(String userId, CreateUserEvent userEvent)
+	{
+		map.put(userId, userEvent);
+		sync.hanldeUserData(userEvent);
 	}
-
-	public void setMap(HashMap<String, Object> map) {
-		this.map = map;
+	
+	public void setUserData(String userId, UpdateUserEvent userEvent)
+	{
+		map.put(userId, userEvent);
+		sync.hanldeUserData(userEvent);
 	}
 	
 }

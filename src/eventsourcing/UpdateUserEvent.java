@@ -1,6 +1,6 @@
 package eventsourcing;
 
-public class CreateUserEvent {
+public class UpdateUserEvent {
 	private String firstName;
 	private String lastName;
 	private String userId;
